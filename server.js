@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 3000;
-const weatherData = [];
+const projectData  = [];
 
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
@@ -18,18 +18,24 @@ app.use(cors());
 // Initialize the main project folder
 app.use(express.static("website"));
 
-app.get("/", (req, res) => {
-  res.send(weatherData);
+
+app.get("/getData", (req, res) => {
+  console.log(projectData);
+  res.sendStatus(200).send(projectData);
 });
 
-app.post("/", (req, res) => {
-  const newEntry = {
+app.post("/postdata", (req, res) => {
+ const newEntry = {
     date: req.body.date,
     temp: req.body.temp,
     content: req.body.content
   }
+ 
 
-  weatherData.push(newEntry);
+  projectData.push(newEntry);
+ 
+  res.send(projectData);
+    console.log(projectData);
 });
 
 // Setup Server
