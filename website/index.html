@@ -4,26 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <title>Weather Journal</title>
-  <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div id="app">
-    <div class="holder headline">
-      Weather Journal App
-    </div>
+  <div class="app">
+    <h1 class="headline">
+      Weather Journal
+    </h1>
     <div class="holder zip">
       <label for="zip">Enter Zipcode here</label>
-      <input type="text" id="zip" placeholder="enter zip code here">
+      <input type="text" id="zip">
+      <p class="zip-error"></p>
     </div>
     <div class="holder feel">
       <label for="feelings">How are you feeling today?</label>
-      <textarea class="myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-      <button id="generate" type="submit"> Generate </button>
+      <textarea class="myInput" id="feelings" rows="9" cols="50"></textarea>
+      <p class="content-error"></p>
+      <button id="generate" type="submit">Generate</button>
     </div>
     <div class="holder entry">
-      <div class="title">Most Recent Entry</div>
+      <h3 class="title">Most Recent Entry</h3>
       <div id="entryHolder">
         <div id="date"></div>
         <div id="temp"></div>

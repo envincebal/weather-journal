@@ -1,10 +1,10 @@
-// Setup empty JS object to act as endpoint for all routes
+// Global variables and npm packages.
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 3000;
-const projectData  = [];
+const projectData = []; // Array that holds entry data
 
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
@@ -18,28 +18,25 @@ app.use(cors());
 // Initialize the main project folder
 app.use(express.static("website"));
 
-
-app.get("/getData", (req, res) => {
-  console.log(projectData);
-  res.sendStatus(200).send(projectData);
+// GET route that retrieves most recent entry from projectData array
+app.get("/getdata", (req, res) => {
+  res.send(projectData);
 });
 
+// POST route which add new entry into projectData array
 app.post("/postdata", (req, res) => {
- const newEntry = {
+  const newEntry = {
     date: req.body.date,
     temp: req.body.temp,
-    content: req.body.content
+    feelings: req.body.feelings
   }
- 
 
   projectData.push(newEntry);
- 
   res.send(projectData);
-    console.log(projectData);
+
 });
 
 // Setup Server
-
 app.listen(port, () => {
   console.log(`Server started on port ${port}.`);
 });
